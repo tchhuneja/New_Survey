@@ -1,0 +1,43 @@
+<resources>
+    <string name="app_name">MSIL SURVEY</string>
+
+    <!--###### Main Activity ######-->
+    <string name="question_1">Engagement</string>
+    <string name="question_2">Knowledge about subject</string>
+    <string name="question_3">Preparation and Organization</string>
+    <string name="question_4">Helpfulness</string>
+    <string name="question_5">Was this seminar educational?</string>
+    <string name="question_6">How applicable was the information provided?</string>
+    <string name="question_8">Rate your overall experience</string>
+    <string name="question_7">Any Suggestions</string>
+    <string name="partially_applicable">Partially Applicable</string>
+    <string name="not_applicable">Not Applicable</string>
+    <string name="somewhat_applicable">Somewhat Applicable</string>
+    <string name="applicable">Applicable</string>
+    <string name="highly_applicable">Highly Applicable</string>
+    <string name="strongly_agree">Strongly Agree</string>
+    <string name="agree">Agree</string>
+    <string name="neutral">Neutral</string>
+    <string name="disagree">Disagree</string>
+    <string name="strongly_disagree">Strongly Disagree</string>
+    <string name="very_organized">Very organized</string>
+    <string name="organized">Organized</string>
+    <string name="acceptable">Acceptable</string>
+    <string name="disorganized">Disorganized</string>
+    <string name="very_disorganized">Very disorganized</string>
+    <string name="excellent">Excellent</string>
+    <string name="good">Good</string>
+    <string name="average">Average</string>
+    <string name="poor">Poor</string>
+    <string name="very_poor">Very poor</string>
+    <string name="SUBMIT">Submit</string>
+
+    <!--###### Credentials Page ######-->
+    <string name="Heading_Text">Personal Details</string>
+    <string name="First_TextView">Staff-Id</string>
+    <string name="Second_TextView">Department</string>
+    <string name="Third_TextView">Name</string>
+    <string name="Fourth_TextView">E-Mail</string>
+    <string name="Next_Button_Text">Next</string>
+
+</resources>
