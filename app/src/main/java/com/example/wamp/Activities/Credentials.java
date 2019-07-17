@@ -1,11 +1,7 @@
 package com.example.wamp.Activities;
 
-import android.app.ActivityOptions;
 import android.content.Intent;
-import android.os.Environment;
 import android.os.Handler;
-import android.os.PatternMatcher;
-import android.provider.SyncStateContract;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Patterns;
@@ -14,13 +10,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.RelativeLayout;
 import android.widget.Toast;
-
 import com.example.wamp.R;
-
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
-import java.io.IOException;
 
 public class Credentials extends AppCompatActivity {
 

@@ -1,12 +1,9 @@
 package com.example.wamp.Activities;
 
-import android.os.Build;
 import android.os.Environment;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.transition.Fade;
 import android.view.View;
-import android.view.Window;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.RadioButton;
@@ -14,23 +11,11 @@ import android.widget.RadioGroup;
 import android.widget.RatingBar;
 import android.widget.SeekBar;
 import android.widget.TextView;
-import android.widget.Toast;
-
-import com.example.wamp.Network.ApiClient;
-import com.example.wamp.Network.ApiService;
 import com.example.wamp.R;
-
 import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
 import java.io.FileWriter;
 import java.io.IOException;
 
-import okhttp3.ResponseBody;
-import retrofit2.Call;
-import retrofit2.Callback;
-import retrofit2.Response;
-import retrofit2.Retrofit;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -55,8 +40,12 @@ public class MainActivity extends AppCompatActivity {
 
     RatingBar ratingBar;
 
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         getSeekbar();
@@ -80,6 +69,8 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
+
+
                 button1=findViewById(group1.getCheckedRadioButtonId());
                 switch (button1.getText().toString()){
                     case "Very poor":   radio1=RADIO_BUTON_VALUE1;
@@ -95,15 +86,15 @@ public class MainActivity extends AppCompatActivity {
 
                 button2=findViewById(group2.getCheckedRadioButtonId());
                 switch (button2.getText().toString()){
-                    case "Very Disorganised":   radio2=RADIO_BUTON_VALUE1;
+                    case "Very disorganised":   radio2=RADIO_BUTON_VALUE1;
                                                 break;
-                    case "Disorganised":        radio2=RADIO_BUTON_VALUE2;
+                    case "Disorganized":        radio2=RADIO_BUTON_VALUE2;
                                                 break;
                     case "Acceptable":          radio2=RADIO_BUTON_VALUE3;
                                                 break;
-                    case "Organised":           radio2=RADIO_BUTON_VALUE4;
+                    case "Organized":           radio2=RADIO_BUTON_VALUE4;
                                                 break;
-                    case "Very organised":      radio2=RADIO_BUTON_VALUE5;
+                    case "Very organized":      radio2=RADIO_BUTON_VALUE5;
                 }
 
                 button3=findViewById(group3.getCheckedRadioButtonId());
@@ -152,28 +143,43 @@ public class MainActivity extends AppCompatActivity {
                 float rating=ratingBar.getRating();
                 int rate=(int) rating;
 
-                String columnString = "\"Staff-ID\",\"Department\",\"Name\",\"E-Mail\",\"Q1\",\"Q2\",\"Q3\",\"Q4\",\"Q5\",\"Q6\",\"Q7\",\"Q8\"";
-                String dataString = "\"" + staff_id + "\",\"" + department + "\",\"" + name + "\",\"" + email + "\",\""+ radio1 + "\",\""+ seekbarProgress + "\",\""+ radio2 + "\",\""+ radio3 + "\",\""+ radio4 + "\",\""+ radio5 + "\",\""+ suggestionString + "\",\""+ rate + "\",\"";
-                String combinedString = columnString + "\n" + dataString;
+//                String columnString = "\"Staff-ID\",\"Department\",\"Name\",\"E-Mail\",\"Q1\",\"Q2\",\"Q3\",\"Q4\",\"Q5\",\"Q6\",\"Q7\",\"Q8\"";
+//                String dataString = "\"" + staff_id + "\",\"" + department + "\",\"" + name + "\",\"" + email + "\",\""+ radio1 + "\",\""+ seekbarProgress + "\",\""+ radio2 + "\",\""+ radio3 + "\",\""+ radio4 + "\",\""+ radio5 + "\",\""+ suggestionString + "\",\""+ rate + "\",\"";
+
+                String columnString="Staff-ID,Department,Name,E-Mail,Q1,Q2,Q3,Q4,Q5,Q6,Q7,Q8";
+                String dataString="" + staff_id + "," + department + "," + name + "," + email + ","+ radio1 + ","+ seekbarProgress + ","+ radio2 + ","+ radio3 + ","+ radio4 + ","+ radio5 + ","+ suggestionString + ","+ rate+"\n";
+
+                String combinedString;// = columnString + "\n" + dataString;
+
+                File file1 = new File(Environment.getExternalStorageDirectory() + File.separator + "/PersonData/FeedbackData.csv");
+
+                boolean file_is_there=file1.exists();
+                if (!file_is_there){
+                    combinedString=columnString + "\n" + dataString;
+                }
+                else{
+                    combinedString=dataString;
+                }
 
                 File file;
                 File root = Environment.getExternalStorageDirectory();
                 if (root.canWrite()) {
                     File dir = new File(root.getAbsolutePath() + "/PersonData");
                     boolean abc=dir.mkdirs();
-                    file = new File(dir, "abcdefData.csv");
-                    FileOutputStream out = null;
+                    file = new File(dir, "FeedbackData.csv");
+                    FileWriter out = null;
                     try {
-                        out = new FileOutputStream(file);
-                    } catch (FileNotFoundException e) {
+                        out = new FileWriter(file,true);
+                    } catch (Exception e) {
                         e.printStackTrace();
                     }
                     try {
-                        out.write(combinedString.getBytes());
+                        out.append(combinedString);
                     } catch (IOException e) {
                         e.printStackTrace();
                     }
                     try {
+                        out.flush();
                         out.close();
                     } catch (IOException e) {
                         e.printStackTrace();
@@ -196,6 +202,7 @@ public class MainActivity extends AppCompatActivity {
 //                        Toast.makeText(getApplicationContext(), t.getMessage(), Toast.LENGTH_SHORT).show();
 //                    }
 //                });
+                finish();
             }
         });
 
@@ -209,8 +216,6 @@ public class MainActivity extends AppCompatActivity {
         seekBarValue.setText("Rating: " + seekBar.getProgress() + "/" + seekBar.getMax());
         seekBar.setOnSeekBarChangeListener(
                 new SeekBar.OnSeekBarChangeListener() {
-
-//                    int progressValue;//Value of seekBar
 
                     @Override
                     public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
