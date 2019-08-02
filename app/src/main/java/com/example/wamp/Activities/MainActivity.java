@@ -1,6 +1,6 @@
 package com.example.wamp.Activities;
 
-import android.os.Environment;
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -8,20 +8,15 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
-import android.widget.RatingBar;
 import android.widget.SeekBar;
 import android.widget.TextView;
 import com.example.wamp.R;
-import java.io.File;
-import java.io.FileWriter;
-import java.io.IOException;
-
 
 public class MainActivity extends AppCompatActivity {
 
     private TextView seekBarValue;
-    String email,name,staff_id,department;
-    Button submitButton;
+    String staff_id;
+    Button nextButton;
     RadioGroup group1,group2,group3,group4,group5;
     RadioButton button1,button2,button3,button4,button5;
 
@@ -38,9 +33,7 @@ public class MainActivity extends AppCompatActivity {
     EditText suggestionEditText;
     String suggestionString;
 
-    RatingBar ratingBar;
-
-
+    Intent intent;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -58,18 +51,12 @@ public class MainActivity extends AppCompatActivity {
 
 
         staff_id=getIntent().getStringExtra("staff_id");
-        department=getIntent().getStringExtra("department");
-        name=getIntent().getStringExtra("name");
-        email=getIntent().getStringExtra("email");
-
         suggestionEditText = findViewById(R.id.suggestions);
 
-        submitButton=findViewById(R.id.submitButton);
-        submitButton.setOnClickListener(new View.OnClickListener() {
+        nextButton=findViewById(R.id.nextButton);
+        nextButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
-
 
                 button1=findViewById(group1.getCheckedRadioButtonId());
                 switch (button1.getText().toString()){
@@ -139,73 +126,25 @@ public class MainActivity extends AppCompatActivity {
 
                 suggestionString=suggestionEditText.getText().toString();
 
-                ratingBar=findViewById(R.id.rating_bar);
-                float rating=ratingBar.getRating();
-                int rate=(int) rating;
-
 //                String columnString = "\"Staff-ID\",\"Department\",\"Name\",\"E-Mail\",\"Q1\",\"Q2\",\"Q3\",\"Q4\",\"Q5\",\"Q6\",\"Q7\",\"Q8\"";
 //                String dataString = "\"" + staff_id + "\",\"" + department + "\",\"" + name + "\",\"" + email + "\",\""+ radio1 + "\",\""+ seekbarProgress + "\",\""+ radio2 + "\",\""+ radio3 + "\",\""+ radio4 + "\",\""+ radio5 + "\",\""+ suggestionString + "\",\""+ rate + "\",\"";
 
-                String columnString="Staff-ID,Department,Name,E-Mail,Q1,Q2,Q3,Q4,Q5,Q6,Q7,Q8";
-                String dataString="" + staff_id + "," + department + "," + name + "," + email + ","+ radio1 + ","+ seekbarProgress + ","+ radio2 + ","+ radio3 + ","+ radio4 + ","+ radio5 + ","+ suggestionString + ","+ rate+"\n";
 
-                String combinedString;// = columnString + "\n" + dataString;
+                intent = new Intent(getApplicationContext(), FinalActivity.class);
+                intent.putExtra("staff_id", staff_id);
+                intent.putExtra("radio1", radio1);
+                intent.putExtra("seekbar_progress",seekbarProgress);
+                intent.putExtra("radio2",radio2);
+                intent.putExtra("radio3",radio3);
+                intent.putExtra("radio4",radio4);
+                intent.putExtra("radio5",radio5);
+                intent.putExtra("suggestions",suggestionString);
 
-                File file1 = new File(Environment.getExternalStorageDirectory() + File.separator + "/PersonData/FeedbackData.csv");
-
-                boolean file_is_there=file1.exists();
-                if (!file_is_there){
-                    combinedString=columnString + "\n" + dataString;
-                }
-                else{
-                    combinedString=dataString;
-                }
-
-                File file;
-                File root = Environment.getExternalStorageDirectory();
-                if (root.canWrite()) {
-                    File dir = new File(root.getAbsolutePath() + "/PersonData");
-                    boolean abc=dir.mkdirs();
-                    file = new File(dir, "FeedbackData.csv");
-                    FileWriter out = null;
-                    try {
-                        out = new FileWriter(file,true);
-                    } catch (Exception e) {
-                        e.printStackTrace();
-                    }
-                    try {
-                        out.append(combinedString);
-                    } catch (IOException e) {
-                        e.printStackTrace();
-                    }
-                    try {
-                        out.flush();
-                        out.close();
-                    } catch (IOException e) {
-                        e.printStackTrace();
-                    }
-                }
-
-
-//                final Retrofit retrofit= ApiClient.getRetrofit();
-//                final ApiService service =retrofit.create(ApiService.class);
-//
-//                Call<ResponseBody> call=service.add(email,name,staff_id,department);
-//                call.enqueue(new Callback<ResponseBody>() {
-//                    @Override
-//                    public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
-//                        Toast.makeText(getApplicationContext(), response.message(), Toast.LENGTH_SHORT).show();
-//                    }
-//
-//                    @Override
-//                    public void onFailure(Call<ResponseBody> call, Throwable t) {
-//                        Toast.makeText(getApplicationContext(), t.getMessage(), Toast.LENGTH_SHORT).show();
-//                    }
-//                });
+                startActivity(intent);
                 finish();
+
             }
         });
-
 
     }
 

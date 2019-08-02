@@ -34,7 +34,7 @@
 
     <!--###### Credentials Page ######-->
     <string name="Heading_Text">Personal Details</string>
-    <string name="First_TextView">Staff-Id</string>
+    <string name="First_TextView">Please Enter Your Staff-Id To Continue</string>
     <string name="Second_TextView">Department</string>
     <string name="Third_TextView">Name</string>
     <string name="Fourth_TextView">E-Mail</string>

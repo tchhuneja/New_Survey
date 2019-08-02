@@ -310,38 +310,18 @@
             android:paddingBottom="8dp"
             android:paddingTop="8dp"
             android:inputType="textCapSentences"/>
-        <TextView
-            android:textColor="@color/white"
-            android:textSize="22sp"
-            android:layout_marginTop="32dp"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/question_8" />
-
-        <RatingBar
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:max="5"
-            android:numStars="5"
-            android:layout_margin="16dp"
-            android:id="@+id/rating_bar"
-            android:rating="1"
-            android:stepSize="1"
-            android:progressTint="#FF9800"
-            />
 
         <Button
-            android:id="@+id/submitButton"
+            android:id="@+id/nextButton"
             android:layout_width="wrap_content"
             android:layout_gravity="center"
             android:layout_height="48dp"
             android:layout_marginTop="48dp"
-            android:text="@string/SUBMIT"
+            android:text="@string/Next_Button_Text"
             android:textSize="15sp"
             android:textColor="@color/colorAccent"
             android:background="@drawable/btn_bg"
             android:layout_marginBottom="20dp"
             />
-
     </LinearLayout>
 </ScrollView>

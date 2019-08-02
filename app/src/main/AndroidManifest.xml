@@ -3,11 +3,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     package="com.example.wamp">
 
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
-
-
-
 
     <application
         android:allowBackup="true"
@@ -18,16 +15,22 @@
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true"
         tools:ignore="GoogleAppIndexingWarning,UnusedAttribute">
-
-        <activity android:theme="@style/SplashTheme" android:name=".Activities.Credentials">
+        <activity android:name=".Activities.FinalActivity"
+            android:screenOrientation="portrait">
+        </activity>
+        <activity
+            android:name=".Activities.Credentials"
+            android:screenOrientation="portrait"
+            android:theme="@style/SplashTheme">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".Activities.MainActivity">
+        <activity android:name=".Activities.MainActivity"
+            android:screenOrientation="portrait">
         </activity>
     </application>
 
 </manifest>
-    <!--<uses-permission android:name="android.permission.INTERNET" />-->
