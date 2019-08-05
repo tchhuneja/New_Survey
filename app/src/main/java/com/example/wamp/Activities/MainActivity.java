@@ -130,6 +130,7 @@ public class MainActivity extends AppCompatActivity {
 //                String dataString = "\"" + staff_id + "\",\"" + department + "\",\"" + name + "\",\"" + email + "\",\""+ radio1 + "\",\""+ seekbarProgress + "\",\""+ radio2 + "\",\""+ radio3 + "\",\""+ radio4 + "\",\""+ radio5 + "\",\""+ suggestionString + "\",\""+ rate + "\",\"";
 
 
+//                To send data to the next Activity
                 intent = new Intent(getApplicationContext(), FinalActivity.class);
                 intent.putExtra("staff_id", staff_id);
                 intent.putExtra("radio1", radio1);

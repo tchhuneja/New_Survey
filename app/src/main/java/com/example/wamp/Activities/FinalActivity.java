@@ -59,7 +59,7 @@ public class FinalActivity extends AppCompatActivity {
                 float rating=ratingBar.getRating();
                 int rate=(int) rating;
 
-                String columnString="Staff ID,Q1,Q2,Q3,Q4,Q5,Q6,Q7,Overall,Image Name";
+                String columnString="Staff ID,Q1,Q2,Q3,Q4,Q5,Q6,Q7,Q8,Image Name";
                 String dataString="" + staff_id + ","+ radio1 + ","+ seekbarProgress + ","+ radio2 + ","+ radio3 + ","+ radio4 + ","+ radio5 + ","+ suggestionString + ","+ rate + "," + "MSIL_"+ staff_id +".jpg" + "\n";
 
                 String combinedString;

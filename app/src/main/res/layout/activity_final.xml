@@ -103,7 +103,7 @@
         android:layout_marginEnd="8dp"
         android:layout_marginRight="8dp"
         android:background="@drawable/btn_bg"
-        android:text="@string/SUBMIT"
+        android:text="SUBMIT"
         android:textColor="@color/colorAccent"
         android:textSize="15sp"
         app:layout_constraintEnd_toEndOf="parent"

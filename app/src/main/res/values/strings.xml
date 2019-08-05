@@ -1,15 +1,20 @@
 <resources>
     <string name="app_name">MSIL SURVEY</string>
 
-    <!--###### Main Activity ######-->
+    <!--###### Questions ######-->
     <string name="question_1">Engagement</string>
     <string name="question_2">Knowledge about subject</string>
     <string name="question_3">Preparation and Organization</string>
     <string name="question_4">Helpfulness</string>
     <string name="question_5">Was this seminar educational?</string>
     <string name="question_6">How applicable was the information provided?</string>
-    <string name="question_8">Rate your overall experience</string>
     <string name="question_7">Any Suggestions</string>
+
+    <string name="question_8">Rate your overall experience</string>
+
+
+
+    <!--###### Options ######-->
     <string name="partially_applicable">Partially Applicable</string>
     <string name="not_applicable">Not Applicable</string>
     <string name="somewhat_applicable">Somewhat Applicable</string>
@@ -30,7 +35,6 @@
     <string name="average">Average</string>
     <string name="poor">Poor</string>
     <string name="very_poor">Very poor</string>
-    <string name="SUBMIT">Submit</string>
 
     <!--###### Credentials Page ######-->
     <string name="Heading_Text">Personal Details</string>
